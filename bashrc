@@ -8,6 +8,9 @@
 # Always use vim
 export EDITOR=$(which vim)
 
+# Force 256 colours
+export TERM=xterm-256color
+
 # Load subsidiary configuration files
 for CONF in ~/.bash/conf.d/*.sh;
 do
