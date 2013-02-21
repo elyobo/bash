@@ -5,16 +5,8 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# Reliably determine the current directory of this file, ignoring symlink
-pushd . >/dev/null
-DIR=$(readlink -f "$0")
-if [ ! -z "$DIR" ]; then
-    cd $(dirname "$0");
-else
-    DIR="$0"
-fi
-DOTBASHROOT=$(cd $(dirname "$DIR"); pwd)
-popd >/dev/null
+# Determine the root of the .bash config, used in conf.d/*
+DOTBASHROOT=$(dirname $(readlink -f "$BASH_SOURCE"))
 
 # Load subsidiary configuration files
 for CONFFILE in $DOTBASHROOT/conf.d/*.sh;
