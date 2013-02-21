@@ -5,6 +5,17 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+# Reliably determine the current directory of this file
+pushd . >/dev/null
+DIR=$(readlink "$0")
+if [ ! -z "$DIR" ]; then
+    cd $(dirname "$0");
+else
+    DIR="$0"
+fi
+ROOT=$(cd $(dirname "$DIR"); pwd)
+popd >/dev/null
+
 # Always use vim
 export EDITOR=$(which vim)
 

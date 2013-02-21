@@ -1,8 +1,3 @@
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
 # colour based aliases
 alias ls='ls --color=auto'
 alias dir='dir --color=auto'
