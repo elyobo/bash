@@ -5,25 +5,19 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# Reliably determine the current directory of this file
+# Reliably determine the current directory of this file, ignoring symlink
 pushd . >/dev/null
-DIR=$(readlink "$0")
+DIR=$(readlink -f "$0")
 if [ ! -z "$DIR" ]; then
     cd $(dirname "$0");
 else
     DIR="$0"
 fi
-ROOT=$(cd $(dirname "$DIR"); pwd)
+DOTBASHROOT=$(cd $(dirname "$DIR"); pwd)
 popd >/dev/null
 
-# Always use vim
-export EDITOR=$(which vim)
-
-# Force 256 colours
-export TERM=xterm-256color
-
 # Load subsidiary configuration files
-for CONF in ~/.bash/conf.d/*.sh;
+for CONFFILE in $DOTBASHROOT/conf.d/*.sh;
 do
-    . $CONF
+    source $CONFFILE
 done

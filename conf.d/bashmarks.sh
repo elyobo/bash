@@ -1,1 +1,1 @@
-source $ROOT/utils/bashmarks/bashmarks.sh
+source $DOTBASHROOT/utils/bashmarks/bashmarks.sh
