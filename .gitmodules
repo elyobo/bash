@@ -7,6 +7,3 @@
 [submodule "utils/bashmarks"]
 	path = utils/bashmarks
 	url = git://github.com/huyng/bashmarks.git
-[submodule "modules/j2"]
-	path = modules/j2
-	url = https://github.com/rupa/j2
