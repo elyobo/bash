@@ -1,3 +1,15 @@
+# Intro
+
+This provides a more modular bash configuration, by loading up any config files
+defined in conf.d/ and providing a staging area for submodules (modules/) and for
+other utilities (utils/).
+
+The current config includes
+
+* bashmarks - git://github.com/huyng/bashmarks.git
+* solarized colours - https://github.com/sigurdga/gnome-terminal-colors-solarized.git
+* git aware prompt - https://github.com/jimeh/git-aware-prompt
+
 # Installation
 
 ```
