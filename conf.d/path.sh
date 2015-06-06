@@ -1,3 +1,2 @@
-export PATH=${PATH}:~/src/adt-bundle-linux/sdk/tools
-export PATH=${PATH}:~/src/adt-bundle-linux/sdk/platform-tools
+export PATH=${PATH}:~/bin:~/.composer/vendor/bin
 
