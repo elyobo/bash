@@ -25,3 +25,19 @@ alias go='git checkout'
 # Checks the status of all git based vendor repositories
 alias vendorstatus='pushd . >/dev/null; cd $(git rev-parse --show-toplevel); if [ -d vendor ]; then echo; for dir in $(find vendor -maxdepth 3 -type d -name .git); do dir=$(dirname $dir); pushd . >/dev/null; cd "$dir"; status=$(git status -s); if [ ! -z "$status" ]; then echo "$dir"; git st; echo; fi; popd>/dev/null; done; fi; popd >/dev/null;'
 alias gs="git st; vendorstatus"
+
+# Aws convenience
+alias awsprod='aws --profile production'
+alias awsdev='aws --profile development'
+
+# SSH to the shared vagrant
+alias gvagrant="pushd . &>/dev/null; cd ~/work/vagrant; vagrant ssh; popd &>/dev/null;"
+
+# Use HHVM for some tasks
+HHVM=$(which hhvm)
+if [ ! -z "$HHVM" ]; then
+    COMPOSER=$(which composer)
+    alias composer="hhvm -v ResourceLimit.SocketDefaultTimeout=60 -v Http.SlowQueryThreshold=60000 -v Eval.Jit=false $COMPOSER"
+fi
+
+alias rwphpcs="phpcs --standard=$HOME/.composer/vendor/ray-white/core-misc/tools/phpcs/raywhite.xml"
