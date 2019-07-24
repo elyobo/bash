@@ -33,11 +33,17 @@ alias awsdev='aws --profile development'
 # SSH to the shared vagrant
 alias gvagrant="pushd . &>/dev/null; cd ~/work/vagrant; vagrant ssh; popd &>/dev/null;"
 
-# Use HHVM for some tasks
-HHVM=$(which hhvm)
-if [ ! -z "$HHVM" ]; then
-    COMPOSER=$(which composer)
-    alias composer="hhvm -v ResourceLimit.SocketDefaultTimeout=60 -v Http.SlowQueryThreshold=60000 -v Eval.Jit=false $COMPOSER"
-fi
+alias rwphpcs="phpcs --standard=$HOME/.config/composer/vendor/ray-white/core-misc/tools/phpcs/raywhite.xml"
 
-alias rwphpcs="phpcs --standard=$HOME/.composer/vendor/ray-white/core-misc/tools/phpcs/raywhite.xml"
+alias clipboard="xclip -selection clipboard"
+
+alias headers="curl -s -D - -o /dev/null"
+function dump() {
+    curl -s -D - -H 'Accept: application/json' -H 'Content-Type: application/json' "$@" | colourise-curl.php
+}
+
+# docker utils
+
+alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
+alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
+alias docker_purge='docker kill $(docker ps -q); docker_clean_ps; docker rmi $(docker images -a -q)'
